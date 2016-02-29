@@ -1,0 +1,22 @@
+{
+  "name": "contatooh",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "Joel Rodrigues Moreira"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0"
+  }
+}
