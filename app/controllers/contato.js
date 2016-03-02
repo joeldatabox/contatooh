@@ -1,3 +1,4 @@
+var ID_CONTATO_INC = 10;
 module.exports = function () {
     var controller = {};
     var contatos = [
@@ -16,7 +17,37 @@ module.exports = function () {
         var contato = contatos.filter(function (contato) {
             return contato._id == idContato;
         })[0];
-        contato? res.json(contato):res.status(404).send('Contato não encontrado');
+        contato ? res.json(contato) : res.status(404).send('Contato nï¿½o encontrado');
+    };
+
+    controller.removeContato = function (req, res) {
+        var idContato = req.params.id;
+        console.log('API: removeContato: ');
+        contatos = contatos.filter(function (contato) {
+            return contato._id != idContato;
+        });
+        res.status(204).end();
+    };
+
+    controller.salvaContato = function (req, res) {
+        var contato = req.body;
+        contato = contato._id ? atualiza(contato) : adiciona(contato);
+    };
+
+    function adiciona(contato){
+        contato._id = ++ ID_CONTATO_INC;
+        contatos.push(contato);
+        return contato;
+    };
+
+    function atualiza(contato){
+        contatos=contatos.map(function(value){
+            if(value._id == contato._id){
+                value = contato;
+            }
+            return value;
+        });
+        return contato;
     };
     return controller;
 };

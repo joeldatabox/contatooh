@@ -2,7 +2,6 @@
 var express = require('express');
 var load = require('express-load');
 var bodyParser = require('body-parser');
-var home = require('../app/routes/home');
 
 module.exports = function () {
     var app = express();
