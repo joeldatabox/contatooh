@@ -17,4 +17,5 @@ module.exports = function (uri) {
             process.exit(0);
         });
     });
+    mongoose.set('debug', true);
 };

@@ -15,6 +15,7 @@ angular.module('contatooh').controller('ContatoController', function ($scope, $r
     }
 
     $scope.salva = function () {
+        console.log($scope.contato);
         $scope.contato.$save()
             .then(function () {
                 $scope.mensage = {texto: 'Salvo com sucesso!'};
@@ -24,4 +25,8 @@ angular.module('contatooh').controller('ContatoController', function ($scope, $r
                 $scope.mensage = {texto: 'Não foi possivel salvar!'};
             });
     };
+
+    Contato.query(function (contatos) {
+        $scope.contatos = contatos;
+    });
 });
