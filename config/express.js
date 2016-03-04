@@ -44,5 +44,10 @@ module.exports = function () {
         .then('controllers')
         .then('routes')
         .into(app);
+
+    //se nenhuma rota atender, direciona para página 404
+    app.get('*', function(req, res){
+        res.status(404).render('404');
+    });
     return app;
 };
