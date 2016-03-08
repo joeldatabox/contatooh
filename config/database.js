@@ -5,7 +5,6 @@ module.exports = function (uri) {
     mongoose.connection.on('connected', function () {
         console.log('Mongoose! Conectado em ' + uri);
     });
-
     mongoose.connection.on('disconnected', function () {
         console.log('Mongoose! Desconectado de ' + uri);
     });
