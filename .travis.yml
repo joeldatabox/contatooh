@@ -1,9 +1,9 @@
 language: node_js
 notifications:
-  - joel.databox@gmail.com
+  email: joel.databox@gmail.com
 node_js:
   - 0.10
-service:
+services:
   - mongodb
 env:
   global:
@@ -18,11 +18,10 @@ before_install:
   - webdriver-manager update
   - bower install
 before_script:
-  - node test/data.js
+  - node test/data.js 
   - grunt
   - cd dist
 script:
-  - karma start config/karma.config.js --single-run --browsers PhantomJS
-  - node server &
-  - protractor config/protractor.js
-
+ - karma start config/karma.config.js --single-run --browsers PhantomJS
+ - node server &
+ - protractor config/protractor.js
