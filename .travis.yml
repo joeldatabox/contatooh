@@ -2,7 +2,7 @@ language: node_js
 notifications:
   email: joel.databox@gmail.com
 node_js:
-  - 0.10
+  - 4.2.5
 services:
   - mongodb
 env:
