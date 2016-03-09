@@ -12,5 +12,5 @@ module.exports = {
     travisBuild: process.env.TRAVIS_BUILD_NUMBER,
     port: 3000,
     address: 'localhost',
-    domain: 'localhost:3000'
+    domain: 'localhost'
 };
