@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Tue Jan 20 2015 09:41:50 GMT-0200 (BRST)
 
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -23,19 +23,31 @@ module.exports = function(config) {
             '../public/js/controllers/**/*.js',
             '../public/js/services/**/*.js',
             '../public/js/directives/**/*.js',
-            '../test/spec/**/*Spec.js'
+            '../test/spec/**/*Spec.js',
+            '../public/js/directives/meus-componentes/*.html'
         ],
 
         // list of files to exclude
-        exclude: [
-        ],
+        exclude: [],
 
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
+            '../public/directives/**/*.html': 'ng-html2js'
         },
 
+        plugins : [
+            'karma-chrome-launcher',
+            'karma-ng-html2js-preprocessor',
+            'karma-phantomjs-launcher',
+            'karma-jasmine'
+        ],
+
+        ngHtml2JsPreprocessor: {
+            moduleName: 'templates',
+            stripPrefix: '.*public/'
+        },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
