@@ -2,26 +2,34 @@ language: node_js
 notifications:
   email: joel.databox@gmail.com
 node_js:
-  - 4.2.5
+- 4.2.5
 services:
-  - mongodb
+- mongodb
 env:
   global:
-    - NODE_ENV: test
+  - NODE_ENV: test
 addons:
   sauce_connect: true
 before_install:
-  - npm install -g bower
-  - npm install -g grunt-cli
-  - npm install -g karma-cli
-  - npm install -g protractor
-  - webdriver-manager update
-  - bower install
+- npm install -g bower
+- npm install -g grunt-cli
+- npm install -g karma-cli
+- npm install -g protractor
+- webdriver-manager update
+- bower install
 before_script:
-  - node test/data.js 
-  - grunt
-  - cd dist
+- node test/data.js
+- grunt minifica
 script:
- - karma start config/karma.config.js --single-run --browsers PhantomJS
- - node server &
- - protractor config/protractor.js
+- karma start config/karma.config.js --single-run --browsers PhantomJS
+- node server &
+- protractor config/protractor.js
+deploy:
+  provider: openshift
+  user: joel.databox@gmail.com
+  password:
+    secure: mMio/cIoF7XR4MTrZo3mRj0LC6jeqfm/pKNPAxo18WOCO7GbxK9475n67/PDsw3v7yJe9f+CJrgadyJNlpKTMWJJGlYbd0XPTmp7Pxp9r3BFmA18FVzROjtMVkzLrP19+newjwJXOJC34jtxL0dniDnGhrg2r+kLvOKT2Klfz5W7TLe/iBUfAE3ziMhH4oO+gux1MqHCCygrCxV5hWaTZ9T+rMukE6xmkCvIaLIWr3zLTEo8ZEiMHrZVFbKtqv4Bz4XABO0aT/UN0k0UpMx+bvJYDB5fbaLcfFi1ongBzX7N9TnJpYuA8MwSPNiOstQX9kb8V2up9BMnA/FqKEUpbjh32Cyr3Amm/rtg0bphCsMQdjb0raSkZ5VYU1yM/NmwVscUDqa8Mcbhe3Q6B3W5Kv8ZW2XXKAOm2mnL90aKQ9K5d+pdOuLu8+/PYAKpWgp80jfRojJu4NjCjvbqHBIonPGXA+98YQQC8iXh0sNwkIZAD66W1zWGCUcuVAQ0ayt8l0JWkIAmcb3pZ/SBFdvkGo08fuLZ98yqTYhIh3bLjFeKU9MifEbFaSy3PDt+pHz5bZ+WWyfSfFDjbgViGvelJuTB4h/1NLXdcV3DhT/OkATujOMr10za64oM2fbdxkOQjgUob5NBLHT9Ht8b6Jpsz0/rQRbZd9pAIjV/iFs/Yh4=
+  app: contatooh
+  domain: contatooh-maxxsoft.rhcloud.com/
+  on:
+    repo: joeldatabox/contatooh
