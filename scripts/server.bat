@@ -1,7 +1,7 @@
 set NODE_ENV=development
-set SELENIUM_USER=nome_de_um_usuario_no_github
-set SELENIUM_USER_PASSWORD=senha_do_usuario
-set CLIENT_ID=client_id_da_apliacao
-set CLIENT_SECRET=senha_do_client
+set SELENIUM_USER=joelmaxxsoft
+set SELENIUM_USER_PASSWORD=superroot9014@#
+set CLIENT_ID=a0d97f3dfa298df32ca3
+set CLIENT_SECRET=dd22b1d2fc9d8d283915e15a63b4d0528c5941c6
 
-node server
+nodemon server.js
