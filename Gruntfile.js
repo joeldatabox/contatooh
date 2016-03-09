@@ -1,39 +1,39 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         /*usado para fazer copia
-        copy: {
-            project: {
-                expand: true,
-                cwd: '.',
-                src: ['**', '!Gruntfile.js', '!package.json', '!bower.json'],
-                dest: 'dist'
-            }
-        },
-        clean: {
-            dist: {
-                src: 'dist'
-            }
-        },*/
+         copy: {
+         project: {
+         expand: true,
+         cwd: '.',
+         src: ['**', '!Gruntfile.js', '!package.json', '!bower.json'],
+         dest: 'dist'
+         }
+         },
+         clean: {
+         dist: {
+         src: 'dist'
+         }
+         },*/
         usemin: {
-            html: 'dist/app/views/**/*.ejs'
+            html: 'app/views/**/*.ejs'
         },
         useminPrepare: {
             options: {
-                root: 'dist/public',
-                dest: 'dist/public'
+                root: 'public',
+                dest: 'public'
             },
-            html: 'dist/app/views/**/*.ejs'
+            html: 'app/views/**/*.ejs'
         },
         ngAnnotate: {
             scripts: {
                 expand: true,
-                src: ['dist/public/js/**/*.js']
+                src: ['public/js/**/*.js']
             }
         }
     });
 
     /*grunt.registerTask('default', ['dist', 'minifica']);
-    grunt.registerTask('dist', ['clean', 'copy']);*/
+     grunt.registerTask('dist', ['clean', 'copy']);*/
     grunt.registerTask('minifica', ['useminPrepare', 'ngAnnotate', 'concat', 'uglify', 'cssmin', 'usemin']);
 
 
