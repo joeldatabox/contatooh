@@ -36,6 +36,6 @@ deploy:
 before_deploy:
   - git config --global user.email 'travis@travis-ci.com'
   - git config --global user.name 'Travis CI'
-  - git chekout $TRAVIS_BRANCH
+  - git checkout $TRAVIS_BRANCH
   - git add --all
   - git commit -am "Travis commit"
