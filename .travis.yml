@@ -24,6 +24,12 @@ script:
 - karma start config/karma.config.js --single-run --browsers PhantomJS
 - node server &
 - protractor config/protractor.js
+before_deploy:
+- git config --global user.email 'travis@travis-ci.com'
+- git config --global user.name 'Travis CI'
+- git checkout $TRAVIS_BRANCH
+- git add --all
+- git commit -am "Travis commit"
 deploy:
   provider: openshift
   user: joel.databox@gmail.com
@@ -33,9 +39,3 @@ deploy:
   domain: contatooh-maxxsoft.rhcloud.com/
   on:
     repo: joeldatabox/contatooh
-before_deploy:
-  - git config --global user.email 'travis@travis-ci.com'
-  - git config --global user.name 'Travis CI'
-  - git checkout $TRAVIS_BRANCH
-  - git add --all
-  - git commit -am "Travis commit"
