@@ -5,8 +5,13 @@ var config = require('./config')();
 module.exports = function () {
 
     var Usuario = mongoose.model('Usuario');
-    var githubCallback = 'http://' + config.domain + ':' + config.port + '/auth/github/callback';
-    console.log('githubCallback; ', githubCallback);
+    var githubCallback = '';
+    if (config.env == 'production') {
+        var githubCallback = 'http://' + config.domain + '/auth/github/callback';
+    } else {
+        var githubCallback = 'http://' + config.domain + ':' + config.port + '/auth/github/callback';
+    }
+    console.log('githubCallback: ', githubCallback);
     passport.use(new GitHubStrategy({
         clientID: config.clientID,
         clientSecret: config.clientSecret,
